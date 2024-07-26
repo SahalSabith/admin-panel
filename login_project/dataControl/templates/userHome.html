@@ -1,0 +1,15 @@
+{% extends 'main.html' %}
+{% block contents %}
+{% load static %}
+
+<nav class="navbar navbar-light py-4" style="background-color: #e3f2fd;">
+    <div class="container-fluid d-flex justify-content-between align-items-center">
+      <a class="navbar-brand px-3" href="#">Library</a>
+      <div class="d-flex px-4">
+        <button class="btn btn-success mx-3" type="button"><a class="text-decoration-none text-white" href="#">AddBooks</a> <i class="bi bi-plus-circle-fill"></i></button>
+        <button class="btn btn-success" type="button"><a href="{% url 'logout' %}" class="text-decoration-none text-white">Logout</a></button>
+      </div>
+    </div>
+  </nav>
+
+{% endblock %}

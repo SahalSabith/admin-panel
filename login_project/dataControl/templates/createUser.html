@@ -1,0 +1,99 @@
+{% extends 'main.html' %}
+{% load static %}
+{% block style1 %}
+<link rel="stylesheet" href="{% static 'css/login.css' %}">
+{% endblock %}
+{% block contents %}
+
+<section class="vh-100 gradient-custom">
+  <div class="container py-5 h-100">
+    <div class="row justify-content-center align-items-center h-100">
+      <div class="col-12 col-lg-9 col-xl-7">
+        <div class="card shadow-2-strong card-registration" style="border-radius: 15px;">
+          <div class="card-body p-4 p-md-5">
+            <h3 class="mb-4 pb-2 pb-md-0 mb-md-5">Create New User</h3>
+            <form method="post" action="{% url 'createUser' %}">
+              {% csrf_token %}
+              <div class="row">
+                <div class="col-md-6 mb-4">
+                  {% if messages %}
+                    <div class="mt-3">
+                  {% for message in messages %}
+                      <div class="alert {% if message.tags %}alert-{{ message.tags }}{% else %}alert-info{% endif %}" role="alert">
+                  {{ message }}
+                </div>
+                  {% endfor %}
+            </div>
+                  {% endif %}
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-md-6 mb-4">
+
+                  <div data-mdb-input-init class="form-outline">
+                    <input pattern="^[a-zA-Z0-9_]{3,16}$" type="text" id="firstName" name="firstName" class="form-control form-control-lg" />
+                    <label class="form-label" for="firstName">First Name</label>
+                  </div>
+
+                </div>
+                <div class="col-md-6 mb-4">
+
+                  <div data-mdb-input-init class="form-outline">
+                    <input pattern="^[a-zA-Z0-9_]{3,16}$" type="text" id="lastName" name="lastName" class="form-control form-control-lg" />
+                    <label class="form-label" for="lastName">Last Name</label>
+                  </div>
+
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-md-6 mb-4 d-flex align-items-center">
+
+                  <div data-mdb-input-init class="form-outline datepicker w-100">
+                    <input pattern="^[a-zA-Z0-9_]{3,16}$" type="text" name="username" class="form-control form-control-lg" id="username" />
+                    <label for="birthdayDate" class="form-label">Username</label>
+                  </div>
+
+                </div>
+                <div class="col-md-6 mb-4">
+
+                  <div data-mdb-input-init class="form-outline">
+                    <input type="email" id="emailAddress" name="emailAddress" class="form-control form-control-lg" />
+                    <label class="form-label" for="emailAddress">Email</label>
+                  </div>
+
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-md-6 mb-1 pb-2">
+
+                  <div data-mdb-input-init class="form-outline">
+                    <input type="password" name="password" id="Password" class="form-control form-control-lg" />
+                    <label class="form-label" for="Password">Password</label>
+                  </div>
+
+                </div>
+                <div class="col-md-6 mb-1 pb-2">
+
+                  <div data-mdb-input-init class="form-outline">
+                    <input type="password" name="confirmPassword" id="confirmPassword" class="form-control form-control-lg" />
+                    <label class="form-label" for="confirmPassword">Confirm Password</label>
+                  </div>
+
+                </div>
+              </div>
+              <div class="mt-0 pt-2">
+                <button class="btn btn-outline-success" type="submit">Create</button>
+              </div>
+
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% endblock %}
